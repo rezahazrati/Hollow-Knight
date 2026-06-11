@@ -1,0 +1,29 @@
+{
+  "slotId": 3,
+  "playTime": 24150.6,
+  "lastSaved": "2026-06-14 19:05:44",
+  "lastBenchId": "MINES_QUARRY_BENCH",
+  "currentScene": "CrystalMinesScene",
+  "currentHealth": 7,
+  "maxMasks": 7,
+  "geo": 1850,
+  "soul": 99,
+  "inventory": [
+    "SharpenedNail",
+    "TownMap",
+    "CrossroadsMap",
+    "GreenpathMap",
+    "MinesMap",
+    "LumaflyLantern"
+  ],
+  "boughtSpells": {
+    "VengefulSpirit": true,
+    "DesolateDive": true,
+    "HowlingWraiths": false
+  },
+  "unlockedAbilities": [
+    "MothwingCloak",
+    "MantisClaw",
+    "CrystalHeart"
+  ]
+}

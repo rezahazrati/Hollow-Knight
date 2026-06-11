@@ -1,0 +1,27 @@
+{
+  "slotId": 2,
+  "playTime": 8432.1,
+  "lastSaved": "2026-06-13 14:22:11",
+  "lastBenchId": "GREENPATH_STAG_BENCH",
+  "currentScene": "GreenpathScene",
+  "currentHealth": 6,
+  "maxMasks": 6,
+  "geo": 745,
+  "soul": 99,
+  "inventory": [
+    "OldNail",
+    "TownMap",
+    "CrossroadsMap",
+    "GreenpathMap",
+    "HunterJournal",
+    "StagPass"
+  ],
+  "boughtSpells": {
+    "VengefulSpirit": true,
+    "DesolateDive": false,
+    "HowlingWraiths": false
+  },
+  "unlockedAbilities": [
+    "MothwingCloak"
+  ]
+}

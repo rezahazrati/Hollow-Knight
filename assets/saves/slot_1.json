@@ -1,0 +1,23 @@
+{
+  "slotId": 1,
+  "playTime": 2145.8,
+  "lastSaved": "2026-06-12 10:15:30",
+  "lastBenchId": "CROSSROADS_CENTER_BENCH",
+  "currentScene": "CrossroadsScene",
+  "currentHealth": 5,
+  "maxMasks": 5,
+  "geo": 320,
+  "soul": 99,
+  "inventory": [
+    "OldNail",
+    "TownMap",
+    "CrossroadsMap",
+    "HunterJournal"
+  ],
+  "boughtSpells": {
+    "VengefulSpirit": true,
+    "DesolateDive": false,
+    "HowlingWraiths": false
+  },
+  "unlockedAbilities": []
+}

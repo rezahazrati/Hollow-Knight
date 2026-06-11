@@ -1,0 +1,32 @@
+{
+  "slotId": 4,
+  "playTime": 53210.3,
+  "lastSaved": "2026-06-15 22:41:19",
+  "lastBenchId": "CITY_STOROOM_BENCH",
+  "currentScene": "CityOfTearsScene",
+  "currentHealth": 8,
+  "maxMasks": 8,
+  "geo": 3120,
+  "soul": 99,
+  "inventory": [
+    "ChanneledNail",
+    "TownMap",
+    "CrossroadsMap",
+    "GreenpathMap",
+    "MinesMap",
+    "CityMap",
+    "LumaflyLantern",
+    "SimpleKey"
+  ],
+  "boughtSpells": {
+    "VengefulSpirit": true,
+    "DesolateDive": true,
+    "HowlingWraiths": true
+  },
+  "unlockedAbilities": [
+    "MothwingCloak",
+    "MantisClaw",
+    "CrystalHeart",
+    "IsmasTear"
+  ]
+}
