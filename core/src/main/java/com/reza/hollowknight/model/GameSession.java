@@ -6,16 +6,17 @@ import com.reza.hollowknight.model.entities.Knight;
 import com.reza.hollowknight.model.entities.enemy.BaseEnemy;
 import com.reza.hollowknight.model.entities.enemy.FalseKnightBoss;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameSession {
     private Atmosphere atmosphere;
     private Knight knight;
-    private List<BaseEnemy>  enemies;
+    private List<BaseEnemy> enemies = new ArrayList<>();
     private FalseKnightBoss falseKnight;
-    private List<InteractiveEntity> interactiveEntities;
+    private List<InteractiveEntity> interactiveEntities = new ArrayList<>();
 
-    public GameSession(){
+    public GameSession() {
     }
 
     public Atmosphere getAtmosphere() {

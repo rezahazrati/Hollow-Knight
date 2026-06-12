@@ -2,17 +2,20 @@ package com.reza.hollowknight.model.entities.enemy;
 
 import com.reza.hollowknight.model.Vec2;
 
-public class BaseEnemy {
+public abstract class BaseEnemy {
     private int health;
-    public Vec2 position;
-    public Vec2 velocity;
+    private int maxHealth;
+    private int contactDamage = 1;
+    private boolean facingLeft = true;
+    public Vec2 position = new Vec2(0, 0);
+    public Vec2 velocity = new Vec2(0, 0);
+
+    public BaseEnemy() {
+    }
 
     public BaseEnemy(int health) {
         this.health = health;
-    }
-
-    public BaseEnemy() {
-
+        this.maxHealth = health;
     }
 
     public int getHealth() {
@@ -20,7 +23,24 @@ public class BaseEnemy {
     }
 
     public void decreaseHealth(int amount) {
-        this.health -= amount;
+        this.health = Math.max(0, this.health - amount);
     }
 
+    public int getContactDamage() {
+        return contactDamage;
+    }
+
+    public void setContactDamage(int damage) {
+        this.contactDamage = damage;
+    }
+
+    public boolean isFacingLeft() {
+        return facingLeft;
+    }
+
+    public void setFacingLeft(boolean facingLeft) {
+        this.facingLeft = facingLeft;
+    }
+
+    public abstract void updateStateBehavior(float playerX, float playerY);
 }
