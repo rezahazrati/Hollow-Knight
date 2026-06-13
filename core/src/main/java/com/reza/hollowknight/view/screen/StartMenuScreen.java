@@ -57,13 +57,13 @@ public class StartMenuScreen extends ScreenAdapter {
                 try {
                     loadedProfiles[i] = gdxJson.fromJson(SaveProfile.class, Gdx.files.local(relativePath));
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    System.out.println(e.getMessage()+"\n"+"Problem loading profiles from local path");
                 }
             } else if (Gdx.files.internal(relativePath).exists()) {
                 try {
                     loadedProfiles[i] = gdxJson.fromJson(SaveProfile.class, Gdx.files.internal(relativePath));
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    System.out.println(e.getMessage() +"\n"+"Problem loading profiles from internal path");
                 }
             }
         }
@@ -106,7 +106,7 @@ public class StartMenuScreen extends ScreenAdapter {
         stage.addListener(new InputListener() {
             @Override
             public boolean keyDown(InputEvent event, int keycode) {
-                if (keycode == Input.Keys.FORWARD_DEL || keycode == Input.Keys.DEL || keycode == Input.Keys.BACKSPACE) {
+                if (keycode == Input.Keys.FORWARD_DEL || keycode == Input.Keys.DEL) {
                     int currentIdx = navigationController.getSelectedIndex();
                     if (currentIdx >= 0 && currentIdx < 4) {
                         executeSaveDeletion(currentIdx);

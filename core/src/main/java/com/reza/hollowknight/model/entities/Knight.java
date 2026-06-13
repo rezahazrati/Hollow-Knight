@@ -8,13 +8,13 @@ public class Knight {
     private int mask = 5;
     private int maxMasks = 5;
     private int soulVessel = 0;
-    private int maxSoul = 99;
+    private final int maxSoul = 99;
     private int geo = 0;
     private Vec2 position = new Vec2(0, 0);
     private Vec2 velocity = new Vec2(0, 0);
-    private ArrayList<String> inventory = new ArrayList<>();
-    private HashMap<String, Boolean> boughtSpells = new HashMap<>();
-    private ArrayList<String> unlockedAbilities = new ArrayList<>();
+    private final ArrayList<String> inventory = new ArrayList<>();
+    private final HashMap<String, Boolean> boughtSpells = new HashMap<>();
+    private final ArrayList<String> unlockedAbilities = new ArrayList<>();
 
     public void addMask() {
         this.maxMasks += 1;
