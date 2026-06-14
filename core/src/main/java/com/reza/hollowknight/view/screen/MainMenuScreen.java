@@ -45,18 +45,26 @@ public class MainMenuScreen extends ScreenAdapter {
 
         TextButton startBtn = new TextButton(GameSettings.getString("START GAME"), buttonStyle);
         TextButton settingsBtn = new TextButton(GameSettings.getString("SETTINGS"), buttonStyle);
+        TextButton guideBtn = new TextButton(GameSettings.getString("GUIDE_MENU_TITLE"), buttonStyle);
+        TextButton achievementsBtn = new TextButton(GameSettings.getString("ACHIEVEMENTS"), buttonStyle);
         TextButton quitBtn = new TextButton(GameSettings.getString("QUIT GAME"), buttonStyle);
 
         startBtn.setUserObject((Runnable) () -> game.setScreen(new StartMenuScreen(game)));
         settingsBtn.setUserObject((Runnable) () -> game.setScreen(new SettingsMenuScreen(game)));
+        guideBtn.setUserObject((Runnable) () -> game.setScreen(new GuideMenuScreen(game)));
+        achievementsBtn.setUserObject((Runnable) () -> game.setScreen(new AchievementsScreen(game)));
+
+
         quitBtn.setUserObject((Runnable) () -> Gdx.app.exit());
 
-        rootTable.add(logoImg).padBottom(40f).padTop(10).width(900f).height(250f).row();
+        rootTable.add(logoImg).padBottom(30f).padTop(10).width(900f).height(250f).row();
         rootTable.add(startBtn).width(450f).padBottom(15f).row();
         rootTable.add(settingsBtn).width(450f).padBottom(15f).row();
+        rootTable.add(guideBtn).width(450f).padBottom(15f).row();
+        rootTable.add(achievementsBtn).width(450f).padBottom(15f).row();
         rootTable.add(quitBtn).width(450f);
 
-        TextButton[] items = new TextButton[]{startBtn, settingsBtn, quitBtn};
+        TextButton[] items = new TextButton[]{startBtn, settingsBtn, guideBtn, achievementsBtn, quitBtn};
         navigationController = new MenuNavigationController(game, stage, items);
 
         if (GameSettings.bgmEnabled && game.assetLoader.titleTheme != null) {

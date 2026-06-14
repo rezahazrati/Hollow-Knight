@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -18,15 +18,16 @@ import com.reza.hollowknight.model.GameSettings;
 import java.util.ArrayList;
 
 public class SettingsMenuScreen extends ScreenAdapter {
+    // note: there are some problems and inconsistencies in toggling the language and SFXs and BGM
+    // also the brightness should work like the volume 1 percent by 1 percent
     private final HollowGame game;
     private Stage stage;
     private FitViewport viewport;
     private MenuNavigationController navigationController;
-    private TextButton.TextButtonStyle style;
+    private TextButton.TextButtonStyle buttonStyle;
+    private Label.LabelStyle headerStyle;
 
-    private Table scrollContainerTable;
-    private ScrollPane scrollPane;
-    private int savedIndexCache = 0;
+    private static int savedIndexCache = 0;
     private boolean waitingForKeypress = false;
     private String targetRemapControl = "";
 
@@ -40,11 +41,13 @@ public class SettingsMenuScreen extends ScreenAdapter {
         stage = new Stage(viewport);
         Gdx.input.setInputProcessor(stage);
 
-        style = new TextButton.TextButtonStyle();
-        style.font = game.assetLoader.menuFont;
-        style.fontColor = com.badlogic.gdx.graphics.Color.GRAY;
-        style.overFontColor = com.badlogic.gdx.graphics.Color.WHITE;
-        style.focusedFontColor = com.badlogic.gdx.graphics.Color.WHITE;
+        buttonStyle = new TextButton.TextButtonStyle();
+        buttonStyle.font = game.assetLoader.menuFont;
+        buttonStyle.fontColor = com.badlogic.gdx.graphics.Color.GRAY;
+        buttonStyle.overFontColor = com.badlogic.gdx.graphics.Color.WHITE;
+        buttonStyle.focusedFontColor = com.badlogic.gdx.graphics.Color.WHITE;
+
+        headerStyle = new Label.LabelStyle(game.assetLoader.menuFont, com.badlogic.gdx.graphics.Color.GOLDENROD);
 
         setupGlobalKeyCatchListener();
         rebuildUI();
@@ -59,7 +62,6 @@ public class SettingsMenuScreen extends ScreenAdapter {
                 if (keycode != Input.Keys.ESCAPE) {
                     assignRemappedKey(targetRemapControl, keycode);
                 }
-
                 waitingForKeypress = false;
                 navigationController.setListeningForRemap(false);
                 rebuildUI();
@@ -74,28 +76,31 @@ public class SettingsMenuScreen extends ScreenAdapter {
         }
         stage.getActors().clear();
 
-        scrollContainerTable = new Table();
-        scrollContainerTable.top().padTop(40f).padBottom(40f);
+        Table rootMasterTable = new Table();
+        rootMasterTable.setFillParent(true);
+        rootMasterTable.center();
+        stage.addActor(rootMasterTable);
 
         ArrayList<TextButton> interactiveItemsList = new ArrayList<>();
+        Table leftColumnTable = new Table();
+        leftColumnTable.top().left();
+
+        Label globalHeader = new Label(GameSettings.getString("SETTINGS"), headerStyle);
+        leftColumnTable.add(globalHeader).padBottom(30f).row();
 
         String volumeLabel = GameSettings.getString("BGM VOL: ") + Math.round(GameSettings.bgmVolume * 100) + "%";
-        TextButton bgmVolumeBtn = new TextButton(volumeLabel, style);
+        TextButton bgmVolumeBtn = new TextButton(volumeLabel, buttonStyle);
         bgmVolumeBtn.setUserObject((MenuNavigationController.StepSliderListener) direction -> {
-            GameSettings.bgmVolume += (direction * 0.01f);
-            if (GameSettings.bgmVolume < 0f) GameSettings.bgmVolume = 0f;
-            if (GameSettings.bgmVolume > 1f) GameSettings.bgmVolume = 1f;
-            if (game.assetLoader.titleTheme != null) {
-                game.assetLoader.titleTheme.setVolume(GameSettings.bgmVolume);
-            }
+            GameSettings.bgmVolume = Math.min(1f, Math.max(0f, GameSettings.bgmVolume + (direction * 0.01f)));
+            if (game.assetLoader.titleTheme != null) game.assetLoader.titleTheme.setVolume(GameSettings.bgmVolume);
             GameSettings.save();
             bgmVolumeBtn.setText(GameSettings.getString("BGM VOL: ") + Math.round(GameSettings.bgmVolume * 100) + "%");
         });
-        scrollContainerTable.add(bgmVolumeBtn).padBottom(15f).width(600f).row();
+        leftColumnTable.add(bgmVolumeBtn).padBottom(20f).left().row();
         interactiveItemsList.add(bgmVolumeBtn);
 
         String bgmStateStr = GameSettings.bgmEnabled ? GameSettings.getString("BGM: ON") : GameSettings.getString("BGM: OFF");
-        TextButton bgmToggleBtn = new TextButton(bgmStateStr, style);
+        TextButton bgmToggleBtn = new TextButton(bgmStateStr, buttonStyle);
         bgmToggleBtn.setUserObject((Runnable) () -> {
             GameSettings.bgmEnabled = !GameSettings.bgmEnabled;
             if (game.assetLoader.titleTheme != null) {
@@ -109,72 +114,84 @@ public class SettingsMenuScreen extends ScreenAdapter {
             GameSettings.save();
             rebuildUI();
         });
-        scrollContainerTable.add(bgmToggleBtn).padBottom(15f).width(600f).row();
+        leftColumnTable.add(bgmToggleBtn).padBottom(20f).left().row();
         interactiveItemsList.add(bgmToggleBtn);
 
         String sfxStateStr = GameSettings.sfxEnabled ? GameSettings.getString("SFX: ON") : GameSettings.getString("SFX: OFF");
-        TextButton sfxToggleBtn = new TextButton(sfxStateStr, style);
+        TextButton sfxToggleBtn = new TextButton(sfxStateStr, buttonStyle);
         sfxToggleBtn.setUserObject((Runnable) () -> {
             GameSettings.sfxEnabled = !GameSettings.sfxEnabled;
             GameSettings.save();
             rebuildUI();
         });
-        scrollContainerTable.add(sfxToggleBtn).padBottom(15f).width(600f).row();
+        leftColumnTable.add(sfxToggleBtn).padBottom(20f).left().row();
         interactiveItemsList.add(sfxToggleBtn);
 
         String brightLabel = GameSettings.getString("BRIGHTNESS: ") + Math.round(GameSettings.brightness * 100) + "%";
-        TextButton brightnessBtn = new TextButton(brightLabel, style);
+        TextButton brightnessBtn = new TextButton(brightLabel, buttonStyle);
         brightnessBtn.setUserObject((MenuNavigationController.StepSliderListener) direction -> {
-            GameSettings.brightness += (direction * 0.01f);
-            if (GameSettings.brightness < 0.2f) GameSettings.brightness = 0.2f;
-            if (GameSettings.brightness > 1.8f) GameSettings.brightness = 1.8f;
+            GameSettings.brightness = Math.clamp(GameSettings.brightness + (direction * 0.01f), 0.2f, 1.8f);
             GameSettings.save();
             brightnessBtn.setText(GameSettings.getString("BRIGHTNESS: ") + Math.round(GameSettings.brightness * 100) + "%");
         });
-        scrollContainerTable.add(brightnessBtn).padBottom(15f).width(600f).row();
+        leftColumnTable.add(brightnessBtn).padBottom(20f).left().row();
         interactiveItemsList.add(brightnessBtn);
 
         String languageLabel = GameSettings.getString("LANGUAGE: " + GameSettings.currentLanguage);
-        TextButton langBtn = new TextButton(languageLabel, style);
+        TextButton langBtn = new TextButton(languageLabel, buttonStyle);
         langBtn.setUserObject((Runnable) () -> {
             GameSettings.currentLanguage = "EN".equals(GameSettings.currentLanguage) ? "FR" : "EN";
             GameSettings.save();
-            rebuildUI();
+
+            game.setScreen(new SettingsMenuScreen(game));
         });
-        scrollContainerTable.add(langBtn).padBottom(30f).width(600f).row();
+        leftColumnTable.add(langBtn).padBottom(20f).left().row();
         interactiveItemsList.add(langBtn);
 
-        buildRemapRowItem("MOVE UP", GameSettings.keyUp, scrollContainerTable, interactiveItemsList);
-        buildRemapRowItem("MOVE DOWN", GameSettings.keyDown, scrollContainerTable, interactiveItemsList);
-        buildRemapRowItem("MOVE LEFT", GameSettings.keyLeft, scrollContainerTable, interactiveItemsList);
-        buildRemapRowItem("MOVE RIGHT", GameSettings.keyRight, scrollContainerTable, interactiveItemsList);
-        buildRemapRowItem("ATTACK", GameSettings.keyAttack, scrollContainerTable, interactiveItemsList);
-        buildRemapRowItem("DASH", GameSettings.keyDash, scrollContainerTable, interactiveItemsList);
-        buildRemapRowItem("JUMP", GameSettings.keyJump, scrollContainerTable, interactiveItemsList);
 
-        TextButton resetBtn = new TextButton(GameSettings.getString("RESET TO DEFAULT"), style);
+        Table rightColumnTable = new Table();
+        rightColumnTable.top().left();
+
+        Label controllerHeader = new Label("CONTROLS", headerStyle);
+        rightColumnTable.add(controllerHeader).padBottom(30f).row();
+
+        buildRemapRowItem("MOVE UP", GameSettings.keyUp, rightColumnTable, interactiveItemsList);
+        buildRemapRowItem("MOVE DOWN", GameSettings.keyDown, rightColumnTable, interactiveItemsList);
+        buildRemapRowItem("MOVE LEFT", GameSettings.keyLeft, rightColumnTable, interactiveItemsList);
+        buildRemapRowItem("MOVE RIGHT", GameSettings.keyRight, rightColumnTable, interactiveItemsList);
+        buildRemapRowItem("ATTACK", GameSettings.keyAttack, rightColumnTable, interactiveItemsList);
+        buildRemapRowItem("DASH", GameSettings.keyDash, rightColumnTable, interactiveItemsList);
+        buildRemapRowItem("JUMP", GameSettings.keyJump, rightColumnTable, interactiveItemsList);
+
+
+
+        rootMasterTable.add(leftColumnTable).top().padRight(120f);
+        rootMasterTable.add(rightColumnTable).top().row();
+
+        Table footerTable = new Table();
+        footerTable.center();
+
+        TextButton resetBtn = new TextButton(GameSettings.getString("RESET TO DEFAULT"), buttonStyle);
         resetBtn.setUserObject((Runnable) () -> {
             GameSettings.resetToDefaults();
             if (game.assetLoader.titleTheme != null) {
                 game.assetLoader.titleTheme.setVolume(GameSettings.bgmVolume);
-                if (GameSettings.bgmEnabled && !game.assetLoader.titleTheme.isPlaying()) {
-                    game.assetLoader.titleTheme.play();
-                }
+                if (GameSettings.bgmEnabled && !game.assetLoader.titleTheme.isPlaying()) game.assetLoader.titleTheme.play();
             }
-            rebuildUI();
+            game.setScreen(new SettingsMenuScreen(game));
         });
-        scrollContainerTable.add(resetBtn).padTop(20f).padBottom(15f).width(600f).row();
+        footerTable.add(resetBtn).padTop(40f).padBottom(15f).row();
         interactiveItemsList.add(resetBtn);
 
-        TextButton backBtn = new TextButton(GameSettings.getString("BACK TO MAIN MENU"), style);
-        backBtn.setUserObject((Runnable) () -> game.setScreen(new MainMenuScreen(game)));
-        scrollContainerTable.add(backBtn).width(600f);
+        TextButton backBtn = new TextButton(GameSettings.getString("BACK TO MAIN MENU"), buttonStyle);
+        backBtn.setUserObject((Runnable) () -> {
+            savedIndexCache = 0;
+            game.setScreen(new MainMenuScreen(game));
+        });
+        footerTable.add(backBtn);
         interactiveItemsList.add(backBtn);
 
-        scrollPane = new ScrollPane(scrollContainerTable);
-        scrollPane.setFillParent(true);
-        scrollPane.setScrollingDisabled(true, false);
-        stage.addActor(scrollPane);
+        rootMasterTable.add(footerTable).colspan(2).center();
 
         TextButton[] finalItemsArray = interactiveItemsList.toArray(new TextButton[0]);
         navigationController = new MenuNavigationController(game, stage, finalItemsArray);
@@ -191,7 +208,7 @@ public class SettingsMenuScreen extends ScreenAdapter {
             descriptiveText = GameSettings.getString(controlKey) + ": " + GameSettings.getString("PRESS ANY KEY...");
         }
 
-        TextButton rowRemapButton = new TextButton(descriptiveText, style);
+        TextButton rowRemapButton = new TextButton(descriptiveText, buttonStyle);
         rowRemapButton.setUserObject((Runnable) () -> {
             if (!waitingForKeypress) {
                 waitingForKeypress = true;
@@ -201,7 +218,7 @@ public class SettingsMenuScreen extends ScreenAdapter {
             }
         });
 
-        targetTable.add(rowRemapButton).padBottom(10f).width(600f).row();
+        targetTable.add(rowRemapButton).padBottom(12f).left().row();
         itemRegistry.add(rowRemapButton);
     }
 
@@ -232,13 +249,6 @@ public class SettingsMenuScreen extends ScreenAdapter {
         game.batch.end();
 
         stage.act(delta);
-
-        if (navigationController != null && scrollPane != null) {
-            float totalItems = navigationController.getSelectedIndex();
-            float scrollPercentage = totalItems / 15f;
-            scrollPane.setScrollY(scrollPane.getMaxY() * scrollPercentage);
-        }
-
         stage.draw();
     }
 

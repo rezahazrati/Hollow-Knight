@@ -16,6 +16,9 @@ public class Knight {
     private final HashMap<String, Boolean> boughtSpells = new HashMap<>();
     private final ArrayList<String> unlockedAbilities = new ArrayList<>();
 
+    private boolean godModeEnabled = false;
+    private boolean noclipEnabled = false;
+
     public void addMask() {
         this.maxMasks += 1;
         this.mask = this.maxMasks;
@@ -29,6 +32,7 @@ public class Knight {
     }
 
     public void takeDamage(int amount) {
+        if (godModeEnabled) return;
         this.mask = Math.max(0, this.mask - amount);
     }
 
@@ -36,51 +40,38 @@ public class Knight {
         this.soulVessel = Math.min(maxSoul, this.soulVessel + 11);
     }
 
-    public int getMask() {
-        return mask;
+    public void cheatEmergencyHeal() {
+        this.mask = this.maxMasks;
     }
 
-    public int getMaxMasks() {
-        return maxMasks;
+    public void cheatRefillSoul() {
+        this.soulVessel = this.maxSoul;
     }
 
-    public int getSoulVessel() {
-        return soulVessel;
+    public void toggleGodMode() {
+        this.godModeEnabled = !this.godModeEnabled;
     }
 
-    public int getGeo() {
-        return geo;
+    public void toggleNoclip() {
+        this.noclipEnabled = !this.noclipEnabled;
+        if (noclipEnabled) {
+            this.velocity.set(0, 0);
+        }
     }
 
-    public void setGeo(int geo) {
-        this.geo = Math.max(0, this.geo + geo);
-    }
+    public int getMask() { return mask; }
+    public int getMaxMasks() { return maxMasks; }
+    public int getSoulVessel() { return soulVessel; }
+    public int getGeo() { return geo; }
+    public void setGeo(int geo) { this.geo = Math.max(0, this.geo + geo); }
+    public Vec2 getPosition() { return position; }
+    public void setPosition(Vec2 position) { this.position = position; }
+    public Vec2 getVelocity() { return velocity; }
+    public void setVelocity(Vec2 velocity) { this.velocity = velocity; }
+    public ArrayList<String> getInventory() { return inventory; }
+    public HashMap<String, Boolean> getBoughtSpells() { return boughtSpells; }
+    public ArrayList<String> getUnlockedAbilities() { return unlockedAbilities; }
 
-    public Vec2 getPosition() {
-        return position;
-    }
-
-    public void setPosition(Vec2 position) {
-        this.position = position;
-    }
-
-    public Vec2 getVelocity() {
-        return velocity;
-    }
-
-    public void setVelocity(Vec2 velocity) {
-        this.velocity = velocity;
-    }
-
-    public ArrayList<String> getInventory() {
-        return inventory;
-    }
-
-    public HashMap<String, Boolean> getBoughtSpells() {
-        return boughtSpells;
-    }
-
-    public ArrayList<String> getUnlockedAbilities() {
-        return unlockedAbilities;
-    }
+    public boolean isGodModeEnabled() { return godModeEnabled; }
+    public boolean isNoclipEnabled() { return noclipEnabled; }
 }

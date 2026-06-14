@@ -6,12 +6,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.reza.hollowknight.assets.AssetLoader;
 import com.reza.hollowknight.model.GameSettings;
 import com.reza.hollowknight.view.screen.MainMenuScreen;
+import com.reza.hollowknight.view.ui.AchievementPopupOverlay;
 import games.rednblack.miniaudio.MiniAudio;
 
 public class HollowGame extends Game {
     public SpriteBatch batch;
     public AssetLoader assetLoader;
     public MiniAudio miniAudio;
+    public AchievementPopupOverlay achievementPopupOverlay;
 
     @Override
     public void create() {
@@ -21,6 +23,7 @@ public class HollowGame extends Game {
         miniAudio = new MiniAudio();
         assetLoader = new AssetLoader(this);
         assetLoader.loadMenuAssets();
+        achievementPopupOverlay = new AchievementPopupOverlay(this);
 
         this.setScreen(new MainMenuScreen(this));
     }
