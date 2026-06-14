@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.reza.hollowknight.HollowGame;
 import com.reza.hollowknight.controller.MenuNavigationController;
+import com.reza.hollowknight.model.GameSettings;
 
 public class MainMenuScreen extends ScreenAdapter {
     private final HollowGame game;
@@ -42,66 +43,57 @@ public class MainMenuScreen extends ScreenAdapter {
 
         Image logoImg = new Image(game.assetLoader.gameLogo);
 
-        TextButton startBtn = new TextButton("START GAME", buttonStyle);
-        TextButton settingsBtn = new TextButton("SETTINGS", buttonStyle);
-        TextButton guideBtn = new TextButton("GUIDE", buttonStyle);
-        TextButton achievementBtn = new TextButton("ACHIEVEMENTS", buttonStyle);
-        TextButton quitBtn = new TextButton("QUIT GAME", buttonStyle);
+        TextButton startBtn = new TextButton(GameSettings.getString("START GAME"), buttonStyle);
+        TextButton settingsBtn = new TextButton(GameSettings.getString("SETTINGS"), buttonStyle);
+        TextButton quitBtn = new TextButton(GameSettings.getString("QUIT GAME"), buttonStyle);
 
         startBtn.setUserObject((Runnable) () -> game.setScreen(new StartMenuScreen(game)));
         settingsBtn.setUserObject((Runnable) () -> game.setScreen(new SettingsMenuScreen(game)));
-        guideBtn.setUserObject((Runnable) () -> game.setScreen(new GuideScreen()));
-        achievementBtn.setUserObject((Runnable) () -> game.setScreen(new AchievementsScreen()));
         quitBtn.setUserObject((Runnable) () -> Gdx.app.exit());
 
         rootTable.add(logoImg).padBottom(40f).padTop(10).width(900f).height(250f).row();
-        rootTable.add(startBtn).width(350f).padBottom(15f).row();
-        rootTable.add(settingsBtn).width(350f).padBottom(15f).row();
-        rootTable.add(guideBtn).width(350f).padBottom(15f).row();
-        rootTable.add(achievementBtn).width(350f).padBottom(15f).row();
-        rootTable.add(quitBtn).width(350f);
+        rootTable.add(startBtn).width(450f).padBottom(15f).row();
+        rootTable.add(settingsBtn).width(450f).padBottom(15f).row();
+        rootTable.add(quitBtn).width(450f);
 
-        TextButton[] items = new TextButton[]{startBtn, settingsBtn, guideBtn, achievementBtn, quitBtn};
+        TextButton[] items = new TextButton[]{startBtn, settingsBtn, quitBtn};
         navigationController = new MenuNavigationController(game, stage, items);
 
-        if (game.assetLoader.titleTheme != null && !game.assetLoader.titleTheme.isPlaying()) {
-            game.assetLoader.titleTheme.setLooping(true);
-            game.assetLoader.titleTheme.setVolume(0.5f);
-            game.assetLoader.titleTheme.play();
+        if (GameSettings.bgmEnabled && game.assetLoader.titleTheme != null) {
+            game.assetLoader.titleTheme.setVolume(GameSettings.bgmVolume);
+            if (!game.assetLoader.titleTheme.isPlaying()) {
+                game.assetLoader.titleTheme.setLooping(true);
+                game.assetLoader.titleTheme.play();
+            }
+        } else if (game.assetLoader.titleTheme != null && game.assetLoader.titleTheme.isPlaying()) {
+            game.assetLoader.titleTheme.stop();
         }
     }
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(0.05f, 0.05f, 0.05f, 1f);
+        float baseColor = 0.05f * GameSettings.brightness;
+        Gdx.gl.glClearColor(baseColor, baseColor, baseColor, 1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         game.batch.setProjectionMatrix(stage.getCamera().combined);
         game.batch.begin();
+        game.batch.setColor(GameSettings.brightness, GameSettings.brightness, GameSettings.brightness, 1f);
         game.batch.draw(game.assetLoader.menuBackground, 0, 0, VIRTUAL_WIDTH, VIRTUAL_HEIGHT);
+        game.batch.setColor(com.badlogic.gdx.graphics.Color.WHITE);
         game.batch.end();
 
         stage.act(delta);
-
         if (navigationController != null) {
             navigationController.updatePointerPositions();
         }
-
         stage.draw();
     }
 
     @Override
-    public void resize(int width, int height) {
-        uiViewport.update(width, height, true);
-    }
-
+    public void resize(int width, int height) { uiViewport.update(width, height, true); }
     @Override
-    public void hide() {
-        Gdx.input.setInputProcessor(null);
-    }
-
+    public void hide() { Gdx.input.setInputProcessor(null); }
     @Override
-    public void dispose() {
-        if (stage != null) stage.dispose();
-    }
+    public void dispose() { if (stage != null) stage.dispose(); }
 }

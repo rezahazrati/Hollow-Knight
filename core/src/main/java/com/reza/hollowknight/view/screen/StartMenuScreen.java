@@ -13,6 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.reza.hollowknight.HollowGame;
 import com.reza.hollowknight.controller.MenuNavigationController;
+import com.reza.hollowknight.model.GameSettings;
 import com.reza.hollowknight.model.SaveProfile;
 
 public class StartMenuScreen extends ScreenAdapter {
@@ -57,13 +58,13 @@ public class StartMenuScreen extends ScreenAdapter {
                 try {
                     loadedProfiles[i] = gdxJson.fromJson(SaveProfile.class, Gdx.files.local(relativePath));
                 } catch (Exception e) {
-                    System.out.println(e.getMessage()+"\n"+"Problem loading profiles from local path");
+                    System.out.println(e.getMessage() + "\n" + "Problem loading profiles from local path");
                 }
             } else if (Gdx.files.internal(relativePath).exists()) {
                 try {
                     loadedProfiles[i] = gdxJson.fromJson(SaveProfile.class, Gdx.files.internal(relativePath));
                 } catch (Exception e) {
-                    System.out.println(e.getMessage() +"\n"+"Problem loading profiles from internal path");
+                    System.out.println(e.getMessage() + "\n" + "Problem loading profiles from internal path");
                 }
             }
         }
@@ -75,7 +76,8 @@ public class StartMenuScreen extends ScreenAdapter {
         stage.addActor(rootTable);
 
         Label.LabelStyle titleStyle = new Label.LabelStyle(game.assetLoader.menuFont, com.badlogic.gdx.graphics.Color.WHITE);
-        Label titleLabel = new Label("SELECT PROFILE", titleStyle);
+
+        Label titleLabel = new Label(GameSettings.getString("SELECT PROFILE"), titleStyle);
         rootTable.add(titleLabel).padBottom(25f).row();
 
         Table slot1 = buildSlotRowCard(0);
@@ -94,7 +96,7 @@ public class StartMenuScreen extends ScreenAdapter {
         actionStyle.overFontColor = com.badlogic.gdx.graphics.Color.WHITE;
         actionStyle.focusedFontColor = com.badlogic.gdx.graphics.Color.WHITE;
 
-        TextButton backBtn = new TextButton("BACK", actionStyle);
+        TextButton backBtn = new TextButton(GameSettings.getString("BACK"), actionStyle);
         backBtn.setUserObject((Runnable) () -> game.setScreen(new MainMenuScreen(game)));
         rootTable.add(backBtn).width(200f);
 
@@ -134,7 +136,7 @@ public class StartMenuScreen extends ScreenAdapter {
 
         loadedProfiles[slotIndex] = null;
 
-        if (game.assetLoader.buttonClick != null) {
+        if (GameSettings.sfxEnabled && game.assetLoader.buttonClick != null) {
             game.assetLoader.buttonClick.stop();
             game.assetLoader.buttonClick.play();
         }
@@ -154,7 +156,8 @@ public class StartMenuScreen extends ScreenAdapter {
 
         if (data == null) {
             Label.LabelStyle emptyStyle = new Label.LabelStyle(game.assetLoader.menuFont, com.badlogic.gdx.graphics.Color.GRAY);
-            Label emptyText = new Label((index + 1) + ".   NEW GAME", emptyStyle);
+
+            Label emptyText = new Label((index + 1) + ".   " + GameSettings.getString("NEW GAME"), emptyStyle);
             innerBody.add(emptyText).padLeft(40f).expandX().left();
 
             cardContainer.setUserObject((Runnable) () -> {
@@ -191,12 +194,9 @@ public class StartMenuScreen extends ScreenAdapter {
             innerBody.add(primaryStatsStack).padLeft(25f).expandX().left();
 
             Table metaDataStack = new Table().right();
-            String cleanAreaName = data.currentScene.replace("Scene", "")
-                .replaceAll("(?<=[a-z])(?=[A-Z])", " ")
-                .toUpperCase()
-                .trim();
 
-            Label areaLabel = new Label(cleanAreaName, whiteStyle);
+            String rawKey = data.currentScene.toUpperCase().replace("SCENE", "").trim();
+            Label areaLabel = new Label(GameSettings.getString(rawKey), whiteStyle);
 
             int activeMinutes = (int) (data.playTime / 60f);
             String temporalStr = (activeMinutes / 60) + "H " + (activeMinutes % 60) + "M";
@@ -212,7 +212,7 @@ public class StartMenuScreen extends ScreenAdapter {
             smallDeleteStyle.fontColor = com.badlogic.gdx.graphics.Color.GRAY;
             smallDeleteStyle.overFontColor = com.badlogic.gdx.graphics.Color.WHITE;
 
-            TextButton rowClearBtn = new TextButton("CLEAR SAVE", smallDeleteStyle);
+            TextButton rowClearBtn = new TextButton(GameSettings.getString("CLEAR SAVE"), smallDeleteStyle);
             rowClearBtn.addListener(new ClickListener() {
                 @Override
                 public void clicked(InputEvent event, float x, float y) {
@@ -233,12 +233,17 @@ public class StartMenuScreen extends ScreenAdapter {
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(0.02f, 0.02f, 0.02f, 1f);
+        float baseColor = 0.02f * GameSettings.brightness;
+        Gdx.gl.glClearColor(baseColor, baseColor, baseColor, 1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         game.batch.setProjectionMatrix(stage.getCamera().combined);
         game.batch.begin();
+
+        game.batch.setColor(GameSettings.brightness, GameSettings.brightness, GameSettings.brightness, 1f);
         game.batch.draw(game.assetLoader.menuBackground, 0, 0, MainMenuScreen.VIRTUAL_WIDTH, MainMenuScreen.VIRTUAL_HEIGHT);
+        game.batch.setColor(com.badlogic.gdx.graphics.Color.WHITE);
+
         game.batch.end();
 
         stage.act(delta);

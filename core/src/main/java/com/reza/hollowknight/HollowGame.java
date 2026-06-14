@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.reza.hollowknight.assets.AssetLoader;
+import com.reza.hollowknight.model.GameSettings;
 import com.reza.hollowknight.view.screen.MainMenuScreen;
 import games.rednblack.miniaudio.MiniAudio;
 
@@ -14,9 +15,10 @@ public class HollowGame extends Game {
 
     @Override
     public void create() {
+        GameSettings.init();
+
         batch = new SpriteBatch();
         miniAudio = new MiniAudio();
-
         assetLoader = new AssetLoader(this);
         assetLoader.loadMenuAssets();
 
@@ -26,7 +28,6 @@ public class HollowGame extends Game {
     @Override
     public void render() {
         float delta = Gdx.graphics.getDeltaTime();
-
         float safeDelta = Math.min(delta, 1f / 30f);
 
         if (screen != null) {
@@ -39,7 +40,6 @@ public class HollowGame extends Game {
         super.dispose();
         batch.dispose();
         assetLoader.dispose();
-
         if (miniAudio != null) {
             miniAudio.dispose();
         }
