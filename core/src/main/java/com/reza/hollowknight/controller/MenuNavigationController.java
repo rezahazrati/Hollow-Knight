@@ -53,7 +53,7 @@ public class MenuNavigationController {
         stage.addListener(new InputListener() {
             @Override
             public boolean keyDown(InputEvent event, int keycode) {
-                if (listeningForRemap) return false; // Handled individually inside screen layer
+                if (listeningForRemap) return false;
 
                 if (keycode == Input.Keys.UP || keycode == Input.Keys.W) {
                     navigate(-1);

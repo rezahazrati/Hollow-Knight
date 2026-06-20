@@ -28,6 +28,7 @@ public class AssetLoader {
     private HashMap<String, Texture> areaBackgrounds;
 
     public MASound titleTheme;
+    public MASound greenpath;
     public MASound buttonHover;
     public MASound buttonClick;
     public BitmapFont menuFont;
@@ -48,6 +49,7 @@ public class AssetLoader {
         pointerLeft.flip(true, false);
 
         titleTheme = game.miniAudio.createSound("audio/bgm/title_theme.mp3");
+        greenpath = game.miniAudio.createSound("audio/bgm/05. Greenpath.mp3");
         buttonHover = game.miniAudio.createSound("audio/sfx/button_hover.wav");
         buttonClick = game.miniAudio.createSound("audio/sfx/button_click.wav");
 

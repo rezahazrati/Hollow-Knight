@@ -1,16 +1,453 @@
 {
-    "activeFile": "",
+    "activeFile": "greenpath.tmx",
     "expandedProjectPaths": [
     ],
+    "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/01007.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/02008.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/City_of_Tears_Fountain_Square.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/Fungus_05.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/GreenPath.tmx": {
+            "scale": 0.48828125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 5588.992,
+                "y": 1491.9679999999998
+            }
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/GreenPath.tmx#deep_bridge_bottom_rubble": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/GreenPath.tmx#fung_new_0080_Layer-273": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/GreenPath.tmx#vine1": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/Greenpath-in-Hollow-Knight-5.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/Hollow-Knight-Part-3-Greenpath-Image-3.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/Lake_of_Unn_Shrine_Exterior.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/No_eyes_temple_0005_1.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/Slug_Shrine_0000_a.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/Slug_Shrine_0003_a.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/SpriteAtlasTexture-Hunter-512x512-fmt12.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/_0044_Layer-133.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/acid_top_version_03_000.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/anyone-have-any-idea-what-this-thing-is-according-to-the-v0-68pj6g68ndi41.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/big_arch_full.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/black_grass0005.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/bone_spike_04.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/break1.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/cd_highway_break_back.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/cd_well_brick_r.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/crumble_floor_fungus.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/deep_bridge_back_rubble.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/deep_collapser.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/dream_BG_plats_0001_3.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fence_01.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/floor_layered_0000_04_green.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/floor_layered_0002_02_green.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/floor_layered_0003_01.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/floor_layered_0003_01_green.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/freddy.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_acid_BG_02_0002_a.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_big_roof_0000_a.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_big_roof_0004_a.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_floor1_0002_Layer-0.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_new_0027_Layer-321.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_new_0028_Layer-320.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_new_0054_Layer-288.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_new_0064_Layer-294.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_new_0064_Layer-294_lamp_break.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_new_0065_Layer-293 #624026.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_new_0069_Layer-279.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_new_0078_Layer-275.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_new_0080_Layer-273.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_new_0083_c.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_new_0088_a.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_new_0090_d.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_new_0091_d.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_new_0092_d.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_new_0099_Layer-258.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_new_0106_Layer-254-copy.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_new_0109_Layer-251.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_new_0117_Layer-265.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_new_0122_Layer-245.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_new_0123_Layer-244.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_new_0126_03.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_new_0128_01.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_new_0131_Layer-238.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_new_0137_Layer-232.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_new_0138_Layer-231.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_new_0149_be.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_pillar_wall_0000_3.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_pillar_wall_0001_2.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_pillar_wall_0002_1.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_pod_02.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fung_vine_cut012.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fungd_roof_vine_01_0004_a.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fungd_roof_vine_01_0005_a.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fungd_spikes_01.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fungd_spikes_06.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fungd_vine_09_0001_a.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fungd_vine_10.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fungd_vine_11_0000_Layer-1.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fungd_vine_13_0002_Layer-0.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/fungus_crubmle_floor.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/gg_col_outer_0000_1_outer_piece_tail.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/grass_02_idle0000.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/grass_03_idle0015.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/greennnn.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/nailmaster_fung_hut_02.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/nailmaster_hut_01_0000_c.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/nailmaster_hut_01_0002_a.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/nailmaster_hut_01_0007_roof_01.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/nailmaster_hut_EXT_0001_3.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/painting_01.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/painting_junk.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/pay_bench0012.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/slug_shrine_bench.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/thorn_plinth.tsx": {
+            "scaleInDock": 1
+        },
+        "D:/University/Term2/AP/graphic setup/untitled folder/untitled folder/vine_platform_01.tsx": {
+            "scaleInDock": 1
+        },
+        "acidWaterfall.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 1
+        },
+        "acidWaterfall2.tsx": {
+            "scaleInDock": 0.25,
+            "scaleInEditor": 1
+        },
+        "bench.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1
+        },
+        "breakableWall.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "bridge.tsx": {
+            "scaleInDock": 0.75,
+            "scaleInEditor": 1
+        },
+        "floor.tsx": {
+            "scaleInDock": 0.75,
+            "scaleInEditor": 1
+        },
+        "floorNail.tsx": {
+            "scaleInDock": 0.25,
+            "scaleInEditor": 0.5
+        },
+        "fung-wall.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "fung_acid_water_BG_02_0003_a.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "greenpath.tmx": {
+            "scale": 0.03125,
+            "selectedLayer": 6,
+            "viewCenter": {
+                "x": 5536,
+                "y": 7920
+            }
+        },
+        "greenpath.tmx#acidWaterfall2": {
+            "scaleInDock": 1
+        },
+        "greenpath.tmx#bench": {
+            "scaleInDock": 1
+        },
+        "greenpath.tmx#breakableWall": {
+            "scaleInDock": 1
+        },
+        "greenpath.tmx#bridge": {
+            "scaleInDock": 1
+        },
+        "greenpath.tmx#floor": {
+            "scaleInDock": 1
+        },
+        "greenpath.tmx#floorNail": {
+            "scaleInDock": 1
+        },
+        "greenpath.tmx#fung-wall": {
+            "scaleInDock": 1
+        },
+        "greenpath.tmx#painting_nailsmith_0001_paint2": {
+            "scaleInDock": 1
+        },
+        "greenpath.tmx#spike1": {
+            "scaleInDock": 1
+        },
+        "greenpath.tmx#spike2": {
+            "scaleInDock": 1
+        },
+        "greenpath.tmx#spike3": {
+            "scaleInDock": 1
+        },
+        "greenpath.tmx#spike4": {
+            "scaleInDock": 1
+        },
+        "greenpath.tmx#spike5": {
+            "scaleInDock": 1
+        },
+        "greenpath.tmx#spike6": {
+            "scaleInDock": 1
+        },
+        "greenpath.tmx#spike7": {
+            "scaleInDock": 1
+        },
+        "greenpath.tmx#wallPaper": {
+            "scaleInDock": 0.0625
+        },
+        "painting_nailsmith_0001_paint2.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "spike1.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 1
+        },
+        "spike2.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "spike3.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "spike4.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "spike5.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "spike6.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "spike7.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1
+        },
+        "wallPaper.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
     },
+    "last.externalTilesetPath": "D:/University/Term2/AP/Exercise/E4/Hollow Knight/assets/maps",
+    "last.imagePath": "D:/University/Term2/AP/Exercise/E4/Hollow Knight/assets/maps/sprites/Greenpath",
     "map.height": 2000,
+    "map.lastUsedFormat": "tmx",
     "map.tileHeight": 8,
     "map.tileWidth": 8,
     "map.width": 1000,
     "openFiles": [
+        "greenpath.tmx",
+        "wallPaper.tsx",
+        "painting_nailsmith_0001_paint2.tsx"
     ],
     "project": "hollow-knight.tiled-project",
     "recentFiles": [
-    ]
+        "painting_nailsmith_0001_paint2.tsx",
+        "wallPaper.tsx",
+        "greenpath.tmx",
+        "bench.tsx",
+        "acidWaterfall2.tsx",
+        "acidWaterfall.tsx",
+        "spike7.tsx",
+        "spike6.tsx",
+        "spike5.tsx",
+        "spike4.tsx",
+        "spike3.tsx",
+        "spike2.tsx"
+    ],
+    "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 8,
+        "width": 8
+    }
 }

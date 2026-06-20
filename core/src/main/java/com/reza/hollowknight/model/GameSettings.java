@@ -16,8 +16,9 @@ public class GameSettings {
     public static final int DEFAULT_KEY_ATTACK = Input.Keys.X;
     public static final int DEFAULT_KEY_DASH = Input.Keys.C;
     public static final int DEFAULT_KEY_JUMP = Input.Keys.Z;
+    public static final int DEFAULT_KEY_FOCUS = Input.Keys.A;
 
-    public static int keyUp, keyDown, keyLeft, keyRight, keyAttack, keyDash, keyJump;
+    public static int keyUp, keyDown, keyLeft, keyRight, keyAttack, keyDash, keyJump, keyFocus;
 
     public static float bgmVolume;
     public static boolean bgmEnabled;
@@ -223,6 +224,7 @@ public class GameSettings {
         keyAttack = prefs.getInteger("keyAttack", DEFAULT_KEY_ATTACK);
         keyDash = prefs.getInteger("keyDash", DEFAULT_KEY_DASH);
         keyJump = prefs.getInteger("keyJump", DEFAULT_KEY_JUMP);
+        keyFocus = prefs.getInteger("keyFocus", DEFAULT_KEY_FOCUS);
     }
 
     public static void save() {
@@ -239,6 +241,7 @@ public class GameSettings {
         prefs.putInteger("keyAttack", keyAttack);
         prefs.putInteger("keyDash", keyDash);
         prefs.putInteger("keyJump", keyJump);
+        prefs.putInteger("keyFocus", keyFocus);
         prefs.flush();
     }
 
@@ -256,6 +259,7 @@ public class GameSettings {
         keyAttack = DEFAULT_KEY_ATTACK;
         keyDash = DEFAULT_KEY_DASH;
         keyJump = DEFAULT_KEY_JUMP;
+        keyFocus = DEFAULT_KEY_FOCUS;
         save();
     }
 }

@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.reza.hollowknight.assets.AssetLoader;
 import com.reza.hollowknight.model.GameSettings;
+import com.reza.hollowknight.view.screen.GamePlayScreen;
 import com.reza.hollowknight.view.screen.MainMenuScreen;
 import com.reza.hollowknight.view.ui.AchievementPopupOverlay;
 import games.rednblack.miniaudio.MiniAudio;
@@ -25,7 +26,8 @@ public class HollowGame extends Game {
         assetLoader.loadMenuAssets();
         achievementPopupOverlay = new AchievementPopupOverlay(this);
 
-        this.setScreen(new MainMenuScreen(this));
+        //this.setScreen(new MainMenuScreen(this));
+        this.setScreen(new GamePlayScreen(this));
     }
 
     @Override

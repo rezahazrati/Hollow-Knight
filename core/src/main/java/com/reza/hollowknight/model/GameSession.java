@@ -1,6 +1,5 @@
 package com.reza.hollowknight.model;
 
-import com.reza.hollowknight.model.atmosphere.Atmosphere;
 import com.reza.hollowknight.model.entities.InteractiveEntity;
 import com.reza.hollowknight.model.entities.Knight;
 import com.reza.hollowknight.model.entities.enemy.BaseEnemy;
@@ -10,21 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameSession {
-    private Atmosphere atmosphere;
     private Knight knight;
     private List<BaseEnemy> enemies = new ArrayList<>();
     private FalseKnightBoss falseKnight;
     private List<InteractiveEntity> interactiveEntities = new ArrayList<>();
 
     public GameSession() {
-    }
-
-    public Atmosphere getAtmosphere() {
-        return atmosphere;
-    }
-
-    public void setAtmosphere(Atmosphere atmosphere) {
-        this.atmosphere = atmosphere;
     }
 
     public Knight getKnight() {
