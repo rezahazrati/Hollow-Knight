@@ -325,11 +325,11 @@
             "scaleInEditor": 1
         },
         "greenpath.tmx": {
-            "scale": 0.03125,
-            "selectedLayer": 6,
+            "scale": 3,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 5536,
-                "y": 7920
+                "x": 6807,
+                "y": 1242.8333333333333
             }
         },
         "greenpath.tmx#acidWaterfall2": {

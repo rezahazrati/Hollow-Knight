@@ -108,7 +108,7 @@ public class KnightView implements Disposable {
         }
 
         TextureRegion currentFrame = animation.getKeyFrame(stateTime);
-        float drawWidth = 64f;
+        float drawWidth = 128f;
         float drawHeight = 128f;
         float drawX = knight.getPosition().x - 8f;
         float drawY = knight.getPosition().y - 8f;
